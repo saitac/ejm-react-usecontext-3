@@ -1,13 +1,19 @@
+import { ReactNode, useContext } from "react"
+import { ThemeContext } from "../Context/Context"
 
 type PanelProps = {
-    title: string
+    title: string,
+    children: ReactNode
 }
 
 
-const Panel = ({title}: PanelProps) => {
+const Panel = ({title, children}: PanelProps) => {
+    const theme = useContext(ThemeContext);
+    const classname = 'panel-'+theme;
     return(
-        <section>
+        <section className={classname}>
             <h1>{title}</h1>
+            {children}
         </section>
     )
 }
